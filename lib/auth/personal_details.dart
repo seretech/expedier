@@ -37,161 +37,164 @@ class _State extends State<PersonalDetails> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: MainClass.customAppBarWh(),
-      body: Column(
-        children: [
-          MainClass.heading('Let\'s begin the journey.', context, false),
-          Expanded(
-            child: Padding(
-              padding: MainClass.padA(16),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    MainClass.bH(16),
-                    MainClass.txtB4('Full legal name', 14),
-                    MainClass.bH(4),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Edt(
-                              textController: fnController,
-                              focusNode: fnFocus,
-                              max: 64,
-                              hint: 'First Name',
-                              textInputType: TextInputType.name
-                          ),
-                        ),
-                        MainClass.bW(12),
-                        Expanded(
-                          child: Edt(
-                              textController: lnController,
-                              focusNode: lnFocus,
-                              max: 64,
-                              hint: 'Last Name',
-                              textInputType: TextInputType.name
-                          ),
-                        ),
-                      ],
-                    ),
-                    MainClass.bH(16),
-                    MainClass.txtB4('Mobile Number', 14),
-                    MainClass.bH(4),
-                    Container(
-                      decoration: MainClass.conDecor(15, AppColor.colorApp, 1, Colors.white),
-                      padding: MainClass.padS(1, 8),
-                      child: Row(
+    return SafeArea(
+      top: false,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: MainClass.customAppBarWh(),
+        body: Column(
+          children: [
+            MainClass.heading('Let\'s begin the journey.', context, false),
+            Expanded(
+              child: Padding(
+                padding: MainClass.padA(16),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      MainClass.bH(16),
+                      MainClass.txtB4('Full legal name', 14),
+                      MainClass.bH(4),
+                      Row(
                         children: [
-                          Image.asset('assets/extras/ng.png', width: 20, height: 20),
-                          MainClass.bW(4),
-                          MainClass.txtCus3('(234)', 14, AppColor.colorAppGray42),
-                          MainClass.bW(4),
-                          Container(
-                            height: 32,
-                            width: 1,
-                            color: AppColor.colorApp,
-                          ),
-                          MainClass.bW(4),
                           Expanded(
                             child: Edt(
-                                focusNode: phFocus,
-                                border: false,
-                                max: 11,
-                                hint: 'Enter Phone number',
-                                textInputType: TextInputType.number,
-                                borderColor: Colors.transparent,
-                                textController: phController),
-                          )
+                                textController: fnController,
+                                focusNode: fnFocus,
+                                max: 64,
+                                hint: 'First Name',
+                                textInputType: TextInputType.name
+                            ),
+                          ),
+                          MainClass.bW(12),
+                          Expanded(
+                            child: Edt(
+                                textController: lnController,
+                                focusNode: lnFocus,
+                                max: 64,
+                                hint: 'Last Name',
+                                textInputType: TextInputType.name
+                            ),
+                          ),
                         ],
                       ),
-                    ),
-                    MainClass.bH(16),
-                    MainClass.txtB4('Password', 14),
-                    MainClass.bH(4),
-                    EdtPass(
-                        onPress: (){
-                          setState(() {
-                            if (isVis) {
-                              isVis = false;
-                            } else {
-                              isVis = true;
-                            }
-                          });
-                        },
-                        focusNode: ppFocus,
-                        textController: ppController,
-                        textInputType: TextInputType.text,
-                        max: 32,
-                        hint: 'Must be up to six characters',
-                        chk: isVis),
-                    MainClass.bH(16),
-                    MainClass.txtB4('Confirm Password', 14),
-                    MainClass.bH(4),
-                    EdtPass(
-                        onPress: (){
-                          setState(() {
-                            if (isVis2) {
-                              isVis2 = false;
-                            } else {
-                              isVis2 = true;
-                            }
-                          });
-                        },
-                        focusNode: pcFocus,
-                        textController: pcController,
-                        textInputType: TextInputType.text,
-                        max: 32,
-                        hint: 'Re-enter password',
-                        chk: isVis2),
-                    MainClass.bH(16),
-                    MainClass.txtB4('Referral code', 14),
-                    MainClass.bH(4),
-                    Edt(
-                        textController: rcController,
-                        focusNode: rcFocus,
-                        max: 16,
-                        hint: 'Referral code (optional)',
-                        textInputType: TextInputType.text
-                    ),
-                    MainClass.bH(16),
-                  ],
+                      MainClass.bH(16),
+                      MainClass.txtB4('Mobile Number', 14),
+                      MainClass.bH(4),
+                      Container(
+                        decoration: MainClass.conDecor(15, AppColor.colorApp, 1, Colors.white),
+                        padding: MainClass.padS(1, 8),
+                        child: Row(
+                          children: [
+                            Image.asset('assets/extras/ng.png', width: 20, height: 20),
+                            MainClass.bW(4),
+                            MainClass.txtCus3('(234)', 14, AppColor.colorAppGray42),
+                            MainClass.bW(4),
+                            Container(
+                              height: 32,
+                              width: 1,
+                              color: AppColor.colorApp,
+                            ),
+                            MainClass.bW(4),
+                            Expanded(
+                              child: Edt(
+                                  focusNode: phFocus,
+                                  border: false,
+                                  max: 11,
+                                  hint: 'Enter Phone number',
+                                  textInputType: TextInputType.number,
+                                  borderColor: Colors.transparent,
+                                  textController: phController),
+                            )
+                          ],
+                        ),
+                      ),
+                      MainClass.bH(16),
+                      MainClass.txtB4('Password', 14),
+                      MainClass.bH(4),
+                      EdtPass(
+                          onPress: (){
+                            setState(() {
+                              if (isVis) {
+                                isVis = false;
+                              } else {
+                                isVis = true;
+                              }
+                            });
+                          },
+                          focusNode: ppFocus,
+                          textController: ppController,
+                          textInputType: TextInputType.text,
+                          max: 32,
+                          hint: 'Must be up to six characters',
+                          chk: isVis),
+                      MainClass.bH(16),
+                      MainClass.txtB4('Confirm Password', 14),
+                      MainClass.bH(4),
+                      EdtPass(
+                          onPress: (){
+                            setState(() {
+                              if (isVis2) {
+                                isVis2 = false;
+                              } else {
+                                isVis2 = true;
+                              }
+                            });
+                          },
+                          focusNode: pcFocus,
+                          textController: pcController,
+                          textInputType: TextInputType.text,
+                          max: 32,
+                          hint: 'Re-enter password',
+                          chk: isVis2),
+                      MainClass.bH(16),
+                      MainClass.txtB4('Referral code', 14),
+                      MainClass.bH(4),
+                      Edt(
+                          textController: rcController,
+                          focusNode: rcFocus,
+                          max: 16,
+                          hint: 'Referral code (optional)',
+                          textInputType: TextInputType.text
+                      ),
+                      MainClass.bH(16),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: MainClass.padS(4, 16),
-            child: Column(
-              children: [
-                Btn(
-                    onPressed: () => validateInputs(),
-                    title: 'Continue'
-                ),
-                MainClass.bH(12),
-                Center(
-                  child: RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      style: GoogleFonts.rubik(color: AppColor.colorAppGray42, fontSize: 13, fontWeight: FontWeight.w300),
-                      children: <TextSpan>[
-                        TextSpan(text: 'Already have an account? '),
-                        TextSpan(text: 'Sign In',
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () => MainClass.open(context, SignIn()),
-                            style: GoogleFonts.rubik(color: AppColor.colorAppDark, fontSize: 14,
-                                fontWeight: FontWeight.w500)
-                        ),
-                      ],
+            Padding(
+              padding: MainClass.padS(4, 16),
+              child: Column(
+                children: [
+                  Btn(
+                      onPressed: () => validateInputs(),
+                      title: 'Continue'
+                  ),
+                  MainClass.bH(12),
+                  Center(
+                    child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                        style: GoogleFonts.rubik(color: AppColor.colorAppGray42, fontSize: 13, fontWeight: FontWeight.w300),
+                        children: <TextSpan>[
+                          TextSpan(text: 'Already have an account? '),
+                          TextSpan(text: 'Sign In',
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () => MainClass.open(context, SignIn()),
+                              style: GoogleFonts.rubik(color: AppColor.colorAppDark, fontSize: 14,
+                                  fontWeight: FontWeight.w500)
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          MainClass.bH(24),
-        ],
+            MainClass.bH(24),
+          ],
+        ),
       ),
     );
   }

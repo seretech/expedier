@@ -19,18 +19,21 @@ class _State extends State<Splash> {
   Widget build(BuildContext context) {
     return AnnotatedRegion(
       value: SystemUiOverlayStyle.dark,
-      child: Container(
-        padding: EdgeInsets.only(bottom: 24, left: 16, right: 16),
-        color: AppColor.colorApp,
-        child: GifView.asset(
-          'assets/onboard/splash.gif',
-          frameRate: 10,
-          loop: false,
-          onFinish: (){
-            MainClass.open(context, const Onboard());
-          },
-        ),
+      child: SafeArea(
+        top: false,
+        child: Container(
+          padding: EdgeInsets.only(bottom: 24, left: 16, right: 16),
+          color: AppColor.colorApp,
+          child: GifView.asset(
+            'assets/onboard/splash.gif',
+            frameRate: 10,
+            loop: false,
+            onFinish: (){
+              MainClass.open(context, const Onboard());
+            },
+          ),
 
+        ),
       ),
     );
   }

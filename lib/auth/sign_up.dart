@@ -24,66 +24,73 @@ class _State extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              SvgPicture.asset('assets/auth/sign_up_card.svg'),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset('assets/extras/logo.png', width: MainClass.devW(context, 10), height: MainClass.devW(context, 10)),
-                  MainClass.bW(4),
-                  Image.asset('assets/extras/app_name.png', width: MainClass.devW(context, 2)),
-                ],
-              )
-            ],
-          ),
-          Padding(
-            padding: MainClass.padA(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return SafeArea(
+      top: false,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Column(
+          children: [
+            Stack(
+              alignment: Alignment.center,
               children: [
-                MainClass.txtB4('Your financial journey begins here.\nReady to take off?', 20),
-                MainClass.bH(16),
-                MainClass.txtB4('Email', 14),
-                MainClass.bH(4),
-                Edt(
-                    textController: emController,
-                    focusNode: emFocus,
-                    hint: 'email@gmail.com',
-                    textInputType: TextInputType.emailAddress
-                ),
-                MainClass.bH(24),
-                Btn(
-                    onPressed: () => validateInputs(),
-                    title: 'Continue'
-                ),
-                MainClass.bH(12),
-                Center(
-                  child: RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      style: GoogleFonts.rubik(color: AppColor.colorAppGray42, fontSize: 13, fontWeight: FontWeight.w300),
-                      children: <TextSpan>[
-                        TextSpan(text: 'Already have an account? '),
-                        TextSpan(text: 'Sign In',
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () => Navigator.pop(context),
-                            style: GoogleFonts.rubik(color: AppColor.colorAppDark, fontSize: 14,
-                                fontWeight: FontWeight.w500)
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                SvgPicture.asset('assets/auth/sign_up_card.svg'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset('assets/extras/logo.png', width: MainClass.devW(context, 10), height: MainClass.devW(context, 10)),
+                    MainClass.bW(4),
+                    Image.asset('assets/extras/app_name.png', width: MainClass.devW(context, 2)),
+                  ],
+                )
               ],
             ),
-          )
-        ],
+            Expanded(
+              child: Padding(
+                padding: MainClass.padA(16),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      MainClass.txtB4('Your financial journey begins here.\nReady to take off?', 20),
+                      MainClass.bH(16),
+                      MainClass.txtB4('Email', 14),
+                      MainClass.bH(4),
+                      Edt(
+                          textController: emController,
+                          focusNode: emFocus,
+                          hint: 'email@gmail.com',
+                          textInputType: TextInputType.emailAddress
+                      ),
+                      MainClass.bH(24),
+                      Btn(
+                          onPressed: () => validateInputs(),
+                          title: 'Continue'
+                      ),
+                      MainClass.bH(12),
+                      Center(
+                        child: RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                            style: GoogleFonts.rubik(color: AppColor.colorAppGray42, fontSize: 13, fontWeight: FontWeight.w300),
+                            children: <TextSpan>[
+                              TextSpan(text: 'Already have an account? '),
+                              TextSpan(text: 'Sign In',
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () => Navigator.pop(context),
+                                  style: GoogleFonts.rubik(color: AppColor.colorAppDark, fontSize: 14,
+                                      fontWeight: FontWeight.w500)
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
